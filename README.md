@@ -21,12 +21,15 @@ To create a server allow video management and allow user to send text message
 - git basic usage
 - node cli
 - pnpm cli
+- env
 
 ## steps
 
 1. clone this repo
 2. run `pnpm install`
-3. run `node server.js`
+3. copy the .env.example file to .env
+4. configure the SERVER_LINK to match your public domain name
+5. run `node server.js`
 
 # specification
 
