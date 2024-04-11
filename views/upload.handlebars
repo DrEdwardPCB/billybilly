@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head> 
+    <body>
+        <script>
+            $(document).ready(function () {
+  $("#uploadForm").submit(function (event) {
+    event.preventDefault();
+    console.log("submitting")
+
+    let formData = new FormData()
+    formData.append('video', $('input[type=file]')[0].files[0]); 
+
+    $.ajax({
+        type: "POST",
+        url:'/api/upload',
+        data: formData,
+        dataType: "text",
+        encode: true,
+        contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+        processData: false,
+        success:function (data) {
+            console.log(data)
+            alert(data)
+        }
+    })
+   
+
+  });
+});
+        </script>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <form ref='uploadForm' 
+      id='uploadForm' 
+      >
+        <input type="file" id="video" name="video" />
+        <input type='submit' value='Upload!' />
+    </form> 
+            </div>
+        </div>
+    </body>   
+</html>
